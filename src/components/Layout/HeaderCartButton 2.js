@@ -6,11 +6,6 @@ import  StatusContext from '../status-context';
 const HeaderCartButton =props=>{
 
     const statusCtx = useContext(StatusContext);
-    
-    const numberOfCartItems = statusCtx.cartItem.reduce((curNumber, item ) => {
-        return curNumber+item.amount;
-    },0);
-
     const buttonClickHandler =(event)=>{
         event.preventDefault();
         statusCtx.onShowCart();
@@ -25,7 +20,7 @@ const HeaderCartButton =props=>{
         <span className = {classes.bump}>
            your cart 
         </span>
-        <span className = {classes.badge}>{numberOfCartItems}</span>
+        <span className = {classes.badge}>{statusCtx.cartItem.length}</span>
         </button>
 
 }

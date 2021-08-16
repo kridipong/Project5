@@ -1,6 +1,6 @@
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
-import React, { Fragment, useContext} from 'react';
+import React, { useState,Fragment,useEffect, useContext} from 'react';
 import Cart from './components/Cart/Cart';
 import StatusContext from '../src/components/status-context';
 
