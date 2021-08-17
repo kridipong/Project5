@@ -23,7 +23,6 @@ const MealItemForm = (props) => {
       return;
     }
     props.onAddToCart(enteredAmountNumber);
-    console.log("activated");
   };
 
     return (

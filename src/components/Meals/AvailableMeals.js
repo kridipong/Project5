@@ -15,7 +15,7 @@ const DUMMY_MEALS = [
     price: "120",
   },
   {
-    id: "2",
+    id: "3",
     meal: "Americano",
     description: "light hot dark taste of coffee",
     price: "100",
@@ -29,7 +29,7 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => <MealItem data={meal} />);
+  const mealsList = DUMMY_MEALS.map((meal) => <MealItem  key= {meal.id} data={meal} />);
 
   return (
     <Card>

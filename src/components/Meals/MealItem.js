@@ -18,7 +18,7 @@ const MealItem = (props) => {
   };
 
   return (
-    <li className={classes.meal} key={props.data.id}>
+    <li className={classes.meal}>
       <div>
         <h3>{props.data.meal}</h3>
         <div className={classes.description}>{props.data.description} </div>
