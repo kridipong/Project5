@@ -8,11 +8,12 @@ const Cart = (props) => {
   const statusCtx = useContext(StatusContext);
 
   const onAddItemHandler =(item) => {
-
+    statusCtx.addItem({...item,amount:1});
 
   };
 
   const onRemoveItemHandler = (id) => {
+    statusCtx.removeItem(id);
 
   };
 
