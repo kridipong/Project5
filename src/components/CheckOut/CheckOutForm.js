@@ -6,7 +6,6 @@ const isValidEmail = (value) => value.includes("@");
 const CheckOutForm = (props) => {
   const {
     enteredValue: enteredName,
-    isValid: nameIsValid,
     hasError: nameHasError,
     onChangeHandler: nameChangeHandler,
     onBlurHandler: nameBlurHandler,
@@ -16,7 +15,6 @@ const CheckOutForm = (props) => {
 
 const {
     enteredValue: enteredEmail,
-    isValid: emailIsValid,
     hasError: emailHasError,
     onChangeHandler: emailChangeHandler,
     onBlurHandler: emailBlurHandler,

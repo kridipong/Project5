@@ -37,27 +37,39 @@ const Cart = (props) => {
     statusCtx.onHideCart();
   };
 
-  
   const getCustomer = (data) => {
     setCustomerDetail(data);
     setFormIsValid(data.formIsValid);
-    console.log(data.formIsValid);
   };
 
-
+  const { isLoading, error, sendRequest: sendOrder } = useHttp();
+  const seeData =(data) => {
+    console.log(data);
+  }
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const {name, email} = customerDetail;
+    const { name, email } = customerDetail;
 
+
+
+    let orderObject = {};
     for (let key in statusCtx.cartItem) {
-     console.log(statusCtx.cartItem[key]);
-     key++; 
+      const item = statusCtx.cartItem[key];
+      console.log(item);
+       const {id, meal, amount, price} = item;
+      orderObject = {...orderObject , [key]:{id:id, meal:meal, amount:amount, price:price} };
+     key++;
     }
-    console.log(`${name}  and ${email} `);
 
+    orderObject = {name:name, email:email, ...orderObject};
+    console.log(orderObject);
+
+    sendOrder({url: "https://myreactapp-14003-default-rtdb.asia-southeast1.firebasedatabase.app/mealOrders.json", method:"POST" , headers: {
+      "Content-Type": "application/json",
+    },
+     body:orderObject }, seeData)
   };
-
 
   return (
     <Modal>
@@ -72,7 +84,13 @@ const Cart = (props) => {
           <button className={classes["button--alt"]} onClick={onCloseHandler}>
             Close
           </button>
-          {hasOrder && <button disabled ={!formIsValid} className={classes.button}>Order</button>}
+          {hasOrder && (
+            <button disabled={!formIsValid} className={classes.button}>
+              Order
+            </button>
+          )}
+            {isLoading && <p> please wait while we upload the order ! </p> }
+            {error &&  <p> there seems to be problem with the system : {error} </p>  }
         </div>
       </form>
     </Modal>

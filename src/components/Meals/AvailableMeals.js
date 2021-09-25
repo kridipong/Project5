@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const AvailableMeals = () => {
   const transformedData = [];
   const [availableMeal, setAvailableMeal] = useState([]);
-  const { isLoading, error, sendRequest: getMeals } = useHttp();
+  const {  sendRequest: getMeals } = useHttp();
 
   useEffect(() => {
     getMeals(
